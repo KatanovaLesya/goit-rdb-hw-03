@@ -1,0 +1,29 @@
+SELECT * FROM `new_schema`.`products`;
+
+SELECT `shippers`.`name`, `shippers`.`phone`
+FROM `new_schema`.`shippers`;
+
+
+SELECT 
+AVG(`products`.`price`) AS average_price, 
+MAX(`products`.`price`) AS maximum_price,
+MIN(`products`.`price`) AS minimum_price 
+FROM `new_schema`.`products`;
+
+
+SELECT DISTINCT `products`.`category_id`, `products`.`price`
+FROM `new_schema`.`products`
+ORDER BY `products`.`price` DESC 
+LIMIT 10;
+
+
+SELECT COUNT(*) AS product_count
+FROM `new_schema`.`products`
+WHERE `products`.`price` BETWEEN 20 AND 100;
+
+
+SELECT `products`.`supplier_id`,
+COUNT(*) AS product_count,
+AVG(`products`.`price`) AS average_price
+FROM `new_schema`.`products`
+GROUP BY `products`.`supplier_id`;
